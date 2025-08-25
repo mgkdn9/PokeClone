@@ -29,11 +29,9 @@ document.addEventListener('DOMContentLoaded',()=>{
     .then(response => response.json())
     .then((jsonData) => {
       // Received data from API:
-      // console.log('jsonData:\n',jsonData)
       for(let i=0; i<jsonData.results.length; i++){
         arrsPokeNames.push(jsonData.results[i].name)
       }
-      // console.log(arrsPokeNames) //array filled
       // pick one at random for the first battle
       searchBox.value = arrsPokeNames[Math.floor(Math.random()*nPokemonAvailable)]
       // put them in the html datalist
@@ -45,7 +43,6 @@ document.addEventListener('DOMContentLoaded',()=>{
     })
   }
   getPokeNames()
-  // console.log('arrsPokeNames: ',arrsPokeNames)//array filled
   
   // obj for appearing on canvas
   function Block(x, y, color, height, width){
@@ -125,8 +122,6 @@ document.addEventListener('DOMContentLoaded',()=>{
     if(!battlePhase){
       // clear the canvas
       ctx.clearRect(0,0, canvas.width, canvas.height)
-      // display relevant game state (player movement) in our movement display
-      pikaPosition.innerText = `Pikachu Position: x: ${pikachu.x}, y: ${pikachu.y}`
       
       //HERE IS WHERE WE WILL LOOK FOR WILD POKEMON ENCOUNTERS
       // zubats.forEach(zubat => detectEncounter(zubat))
@@ -187,7 +182,6 @@ document.addEventListener('DOMContentLoaded',()=>{
       pikachu.y                 < zubat.y + zubat.height
     ){
       startBattle()
-      console.log('---Battle started from detectEncounter---')
       zubats.splice(i,1)
     }
   }
@@ -216,14 +210,18 @@ document.addEventListener('DOMContentLoaded',()=>{
     fetch(fetchURL+searchBox.value)
       .then(response => response.json())
       .then((jsonData) => {
-        // Received data from API:
-        console.log('Received data from API: jsonData:\n',jsonData)
         // Take img url from response obj
         const imgSrc = jsonData.sprites.front_default
-
         // Change image of enemy to be newly found Pokemon
         const enemyImg = document.getElementById('enemyImg')
         enemyImg.src = imgSrc
+        
+        // Take enemy name from response obj
+        let newEnemyName = jsonData.name
+        newEnemyName = newEnemyName.charAt(0).toUpperCase() + newEnemyName.slice(1);
+        // Change name of enemy to be newly found Pokemon
+        let enemyName = document.getElementById('enemyName')
+        enemyName.innerText = newEnemyName
 
         // The whole fetch could probably be inside this if stmnt
         if(!battlePhase){viewChange()}
@@ -292,7 +290,6 @@ document.addEventListener('DOMContentLoaded',()=>{
               if(Math.random()<0.9){// Attacks have 90% accuracy
                 if(Math.random()<0.1){// Attacks have 10% critical hit rate
                   turnDescription.innerText = "Critical Hit!!!"
-                  console.log(turnDescription.innerText)
                   eHealthBar.value -= playerAttackStat.value*10
                 } else {
                   turnDescription.innerText = "Pikachu's attack landed!"
@@ -380,7 +377,6 @@ document.addEventListener('DOMContentLoaded',()=>{
     if(Math.random()<0.9){// Attacks have 90% accuracy
       if(Math.random()<0.1){// Attacks have 10% critical hit rate
         turnDescription.innerText = "Critical Hit!!!"
-        console.log(turnDescription.innerText)
         healthBar.value -= enemyAttackStat.value*10
       } else {
         turnDescription.innerText = searchBox.value+"'s attack landed!"
