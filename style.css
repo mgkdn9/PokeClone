@@ -35,7 +35,7 @@ body {
   font-size: 2.5rem;
 }
 .collapsed {
-  z-index: -1 !important;
+  display: none;
 }
 #pikaPosition {
   font-size: 1.5rem;
