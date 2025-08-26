@@ -241,6 +241,9 @@ canvas {
 }
 /* Small screens */
 @media (max-width: 768px) {
+  #header {
+    font-size: 1.2rem;
+  }
   #battleView {
     grid-template-columns: 1fr; /* single column */
     grid-template-rows: auto auto; /* first row: stage, second row: battleWords */

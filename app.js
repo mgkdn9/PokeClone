@@ -498,27 +498,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  //   // Simulate key presses for mobile buttons
-  //   function triggerKey(code) {
-  //     document.dispatchEvent(new KeyboardEvent("keydown", { code }));
-  //   }
-
-  //   document
-  //     .getElementById("btn-up")
-  //     .addEventListener("click", () => triggerKey("ArrowUp"));
-  //   document
-  //     .getElementById("btn-down")
-  //     .addEventListener("click", () => triggerKey("ArrowDown"));
-  //   document
-  //     .getElementById("btn-left")
-  //     .addEventListener("click", () => triggerKey("ArrowLeft"));
-  //   document
-  //     .getElementById("btn-right")
-  //     .addEventListener("click", () => triggerKey("ArrowRight"));
-  //   document
-  //     .getElementById("btn-attack")
-  //     .addEventListener("click", () => triggerKey("KeyA"));
-  //   document
-  //     .getElementById("btn-heal")
-  //     .addEventListener("click", () => triggerKey("KeyH"));
 });
