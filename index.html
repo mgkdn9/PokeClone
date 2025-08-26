@@ -8,8 +8,7 @@
   <title>PokeClone</title>
 </head>
 <body>
-  <header id="header">  
-
+  <header id="header" class="collapsed">  
     <div class="searching">
       <input checked type="radio" id="choseRandom" name="radioChose" value="random"
       onclick="searchBox.disabled = true">
@@ -20,7 +19,6 @@
       <label for="choseSearch">Search</label>
   
       <input disabled list="datalist" id="searchBox" type="text">
-      <!-- <input name="searchBox" list="datalist" /> -->
       <datalist id="datalist"></datalist>
 
       <button hidden id="btnChangeView">Change View</button>
@@ -51,8 +49,9 @@
 
   <!-- This is the part that will transition for battle -->
   <main id="main">
+    <button class="menu-btn">☰</button>
     <div id="roamView">
-      <canvas id="canvas"><!-- play it, a game --></canvas>
+      <canvas id="canvas"></canvas>
     </div>
     
     <div id="battleView">
@@ -62,7 +61,7 @@
           <progress id="eHealthBar" value="100" max="100"></progress>
         </div>
         <div id="eOptions">
-          <p class="enemyOptions"><span id="eAAttack">(A)Attack</span> <span id="eDHeal">(D)Heal</span></p>
+          <p class="enemyOptions"><span id="eAAttack">(A)Attack</span> <span id="eDHeal">(H)Heal</span></p>
           <h2 class="enemyOptions" id="ePressEnter"></h2>
         </div>
         <!-- <img src="https://i.imgur.com/wcQL4UU.jpg" alt="Pokemon" id="enemyImg"> -->
@@ -77,7 +76,7 @@
         <h1 id="turnIndicator">Pikachu's turn</h1>
         <h2>Do you want to attack or heal?</h2>
         <div id="pOptions" class="border">
-          <p class="playerOptions"><span id="AAttack">(A)Attack</span> <span id="DHeal">(D)Heal</span></p>
+          <p class="playerOptions"><span id="AAttack">(A)Attack</span> <span id="DHeal">(H)Heal</span></p>
           <h2 class="playerOptions" id="pressEnter"></h2>
         </div>
       </div>
@@ -85,13 +84,24 @@
 
   </main>
 
+  <div id="controls-left">
+    <button class="control-btn" id="btn-up">▲</button>
+    <div id="control-left-right">
+      <button class="control-btn" id="btn-left">◀</button>
+      <button class="control-btn" id="btn-right">▶</button>
+    </div>
+      <button class="control-btn" id="btn-down">▼</button>
+  </div>
+
+  <div id="controls-right">
+    <button class="control-btn" id="btn-attack">A</button>
+    <button class="control-btn" id="btn-heal">H</button>
+  </div>
+
   <!-- 'position: fixed' Health bar -->
   <div id="pikaHealth">Pika Health:
     <progress id="healthbar" value="90" max="100"></progress>
   </div>
-
-  <!-- 'position: fixed' Win Total -->
-  <div id="winTotal">Win Total: <span id="winCounter">0</span></div>
 
   <!-- <script src="functions.js"></script> -->
   <script src="app.js"></script>

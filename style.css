@@ -1,21 +1,49 @@
+:root {
+  --pikaHealthHeight: 40px;
+  --controlsHeight: 240px;
+}
 body {
   background-color: #333;
-  min-height: 1000px;
-  width: 1000px;
+  /* max-width: 1000px; */
   margin: 0 auto;
 }
-header {
+.menu-btn {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  background: none;
+  color: #999;
+  border: 3px solid #999;
+  font-size: 36px;
+  cursor: pointer;
+  padding: 4px 10px;
+  transition: transform 0.3s ease;
+  z-index: 9999;
+  border-radius: 10px;
+}
+.menu-btn:hover {
+  transform: scale(1.1);
+}
+#header {
   color: whitesmoke;
+  background-color: black;
   min-height: 100px;
+  position: absolute;
+  top: 0;
+  height: auto;
+  z-index: 999;
+  font-size: 2.5rem;
+}
+.collapsed {
+  z-index: -1 !important;
 }
 #pikaPosition {
   font-size: 1.5rem;
 }
 label {
   margin: 10px;
-  font-size: 1.5rem;
 }
-label>input[type=number]{
+label > input[type="number"] {
   font-size: 1.5rem;
   width: 50px;
 }
@@ -25,8 +53,8 @@ label>input[type=number]{
 main {
   /* width: 300px; */
   width: 100%;
-  min-height: 900px;
-  /* height: 100%; */
+  min-height: 500px;
+  height: calc(100vh - var(--controlsHeight) - var(--pikaHealthHeight) - 20px);
   overflow: hidden;
   position: relative;
 }
@@ -65,7 +93,7 @@ canvas {
   transform: translateX(0);
 }
 #stadiumBackground {
-  background-image: url('stadium.png');
+  background-image: url("stadium.png");
   background-repeat: no-repeat;
   background-position: 60% 0%;
   grid-column: 1/2;
@@ -94,12 +122,12 @@ canvas {
   margin: 0;
   padding: 5px;
 }
-.enemyOptions>span {
+.enemyOptions > span {
   font-size: 2rem;
   padding: 5px;
   color: grey;
 }
-#enemyCorner>img {
+#enemyCorner > img {
   width: 300px;
   position: absolute;
   right: 0;
@@ -110,7 +138,7 @@ canvas {
   grid-column: 1/2;
   grid-row: 2/3;
 }
-#playerCorner>img {
+#playerCorner > img {
   width: 300px;
   background: white;
   background: transparent;
@@ -139,7 +167,8 @@ canvas {
   width: 280px;
   text-align: center;
 }
-#AAttack, #DHeal {
+#AAttack,
+#DHeal {
   padding: 5px;
   font-size: 2rem;
 }
@@ -147,17 +176,61 @@ canvas {
   border: 2px solid black;
   font-weight: bold;
 }
-
 #pikaHealth {
   position: fixed;
   bottom: 0;
   color: whitesmoke;
   font-size: 2rem;
+  height: var(--pikaHealthHeight);
 }
-#winTotal {
-  position: fixed;
-  bottom: 0;
-  right: 10px;
-  color: whitesmoke;
+/* BUTTONS */
+/* #controls {
+  display: flex;
+  pointer-events: none;
+
+} */
+#controls-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: var(--controlsHeight);
+  position: absolute;
+  left: 25%;
+  transform: translate(-50%, 0);
+  bottom: calc(var(--pikaHealthHeight) + 20px);
+}
+#controls-right {
+  height: var(--controlsHeight);
+  position: absolute;
+  left: 75%;
+  bottom: var(--pikaHealthHeight);
+  transform: translate(-50%, 0);
+  display: flex;
+  gap: 20px;
+}
+.control-btn {
   font-size: 2rem;
+  padding: 20px;
+  margin: 5px;
+  border-radius: 50%;
+  border: none;
+  background: #555;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  pointer-events: auto;
+  cursor: pointer;
+  transition: transform 0.1s, background 0.1s;
+  touch-action: manipulation;
+}
+.control-btn:active {
+  background: #666;
+  transform: scale(0.95);
+}
+
+#control-left-right {
+  display: flex;
+  gap: 60px;
 }
