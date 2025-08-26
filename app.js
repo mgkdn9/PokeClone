@@ -484,16 +484,16 @@ document.addEventListener("DOMContentLoaded", () => {
   // Button for manually changing view (for development only)
   viewChangeBtn.addEventListener("click", viewChange);
 
-  const menuBtns = document.getElementsByClassName("menu-btn");
+  const menuBtn = document.getElementById("menu-btn");
 
-  Array.from(menuBtns).forEach((btn) => {
-    btn.addEventListener("click", () => {
-      if (header.classList.contains("collapsed")) {
-        header.classList.remove("collapsed");
-      } else {
-        header.classList.add("collapsed");
-      }
-    });
+  menuBtn.addEventListener("click", () => {
+    if (header.classList.contains("collapsed")) {
+      header.classList.remove("collapsed");
+      menuBtn.textContent = '✖'; 
+    } else {
+      header.classList.add("collapsed");
+      menuBtn.textContent = '☰';
+    }
   });
 
   //   // Simulate key presses for mobile buttons
