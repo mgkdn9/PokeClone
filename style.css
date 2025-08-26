@@ -85,6 +85,7 @@ canvas {
   will-change: transform;
 
   transition: transform 0.8s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+  position: relative;
 }
 .view-change #roamView {
   transform: translateX(-100%);
@@ -102,11 +103,7 @@ canvas {
 .corners {
   height: 250px;
   width: 600px;
-  /* border: 1px dashed black; */
   position: relative;
-}
-.itsThisPersonsTurn {
-  /* border: 1px dashed red; */
 }
 #enemyCorner {
   grid-column: 1/2;
@@ -168,7 +165,7 @@ canvas {
   text-align: center;
 }
 #AAttack,
-#DHeal {
+#HHeal {
   padding: 5px;
   font-size: 2rem;
 }
@@ -177,10 +174,12 @@ canvas {
   font-weight: bold;
 }
 #pikaHealth {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   color: whitesmoke;
   font-size: 2rem;
+  background-color: black;
+  padding: 2px 15px;
   height: var(--pikaHealthHeight);
 }
 /* BUTTONS */

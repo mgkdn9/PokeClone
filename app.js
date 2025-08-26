@@ -231,15 +231,18 @@ document.addEventListener("DOMContentLoaded", () => {
         battlePhase = true;
 
         eHealthBar.value = 100;
-        turnDescription.innerText = searchBox.value + " appeared!";
+        let eName = searchBox.value;
+        console.log("eName", eName);
+        eName = eName.charAt(0).toUpperCase() + eName.slice(1);
+        turnDescription.innerText = eName + " appeared!";
         pikaTurn = true;
         // Initialize CSS for battle start (Pikachu's turn)
         pOptions.classList.add("border");
         eOptions.classList.remove("border");
         pressEnter.style.display = "none";
         ePressEnter.style.display = "none";
-        DHeal.classList.remove("selected");
-        eDHeal.classList.remove("selected");
+        HHeal.classList.remove("selected");
+        eHHeal.classList.remove("selected");
         AAttack.classList.remove("selected");
         eAAttack.classList.remove("selected");
       })
@@ -260,25 +263,25 @@ document.addEventListener("DOMContentLoaded", () => {
   function takeTurn(event) {
     if (battlePhase) {
       const attackSelected = AAttack.classList.contains("selected");
-      const healSelected = DHeal.classList.contains("selected");
+      const healSelected = HHeal.classList.contains("selected");
       const eAttackSelected = eAAttack.classList.contains("selected");
-      const eHealSelected = eDHeal.classList.contains("selected");
+      const eHealSelected = eHHeal.classList.contains("selected");
       if (event.key.toLowerCase() === "a" && pikaTurn) {
         AAttack.classList.add("selected");
-        DHeal.classList.remove("selected");
+        HHeal.classList.remove("selected");
         pressEnter.style.display = "block";
         pressEnter.innerText = "(Press Enter to Attack)";
       } else if (event.key.toLowerCase() === "a" && !aIOn) {
         eAAttack.classList.add("selected");
-        eDHeal.classList.remove("selected");
+        eHHeal.classList.remove("selected");
         ePressEnter.innerText = "(Press Enter to Attack)";
       } else if (event.key.toLowerCase() === "h" && pikaTurn) {
-        DHeal.classList.add("selected");
+        HHeal.classList.add("selected");
         AAttack.classList.remove("selected");
         pressEnter.style.display = "block";
         pressEnter.innerText = "(Press Enter to Heal)";
       } else if (event.key.toLowerCase() === "h" && !aIOn) {
-        eDHeal.classList.add("selected");
+        eHHeal.classList.add("selected");
         eAAttack.classList.remove("selected");
         ePressEnter.innerText = "(Press Enter to Heal)";
       } else if (
@@ -364,18 +367,18 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         setTimeout(() => {
           eAAttack.classList.add("selected");
-          eDHeal.classList.remove("selected");
+          eHHeal.classList.remove("selected");
           eAttack();
         }, 500);
       }
     } else {
       //AI will heal 30% of the time
-      if (eDHeal.classList.contains("selected")) {
+      if (eHHeal.classList.contains("selected")) {
         eHeal();
       } else {
         setTimeout(() => {
           eAAttack.classList.remove("selected");
-          eDHeal.classList.add("selected");
+          eHHeal.classList.add("selected");
           eHeal();
         }, 1500);
       }
@@ -489,10 +492,10 @@ document.addEventListener("DOMContentLoaded", () => {
   menuBtn.addEventListener("click", () => {
     if (header.classList.contains("collapsed")) {
       header.classList.remove("collapsed");
-      menuBtn.textContent = '✖'; 
+      menuBtn.textContent = "✖";
     } else {
       header.classList.add("collapsed");
-      menuBtn.textContent = '☰';
+      menuBtn.textContent = "☰";
     }
   });
 

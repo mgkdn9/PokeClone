@@ -1,109 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="style.css" rel="stylesheet"></link>
-  <title>PokeClone</title>
-</head>
-<body>
-  <header id="header" class="collapsed">  
-    <div class="searching">
-      <input checked type="radio" id="choseRandom" name="radioChose" value="random"
-      onclick="searchBox.disabled = true">
-      <label for="choseRandom">Random Enemy</label>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="style.css" rel="stylesheet" />
+    <title>PokeClone</title>
+  </head>
+  <body>
+    <header id="header" class="collapsed">
+      <div class="searching">
+        <input
+          checked
+          type="radio"
+          id="choseRandom"
+          name="radioChose"
+          value="random"
+          onclick="searchBox.disabled = true"
+        />
+        <label for="choseRandom">Random Enemy</label>
 
-      <input type="radio" id="choseSearch" name="radioChose" value="search"
-      onclick="searchBox.disabled = false">
-      <label for="choseSearch">Search</label>
-  
-      <input disabled list="datalist" id="searchBox" type="text">
-      <datalist id="datalist"></datalist>
+        <input
+          type="radio"
+          id="choseSearch"
+          name="radioChose"
+          value="search"
+          onclick="searchBox.disabled = false"
+        />
+        <label for="choseSearch">Search</label>
 
-      <button hidden id="btnChangeView">Change View</button>
-    </div>
+        <input disabled list="datalist" id="searchBox" type="text" />
+        <datalist id="datalist"></datalist>
 
-    <label for="aIMode">
-      <input type="checkbox" id="aIMode" checked> Enemy AI Mode
-    </label>
-    <label for="renderPokemon">
-      <input type="checkbox" id="renderPokemon" checked> Render Wild Pokemon
-    </label>
-    <button id="viewChangeBtn">viewChange</button>
-    <div>
-      <label for='playerAttackStat'>playerAttackStat: 
-        <input type="number" id="playerAttackStat" value="40">
-      </label>
-      <label for='playerHealStat'>playerHealStat: 
-        <input type="number" id="playerHealStat" value="20">
-      </label>
-      <label for='enemyAttackStat'>enemyAttackStat: 
-        <input type="number" id="enemyAttackStat" value="4">
-      </label>
-      <label for='enemyHealStat'>enemyHealStat: 
-        <input type="number" id="enemyHealStat" value="2">
-      </label>
-    </div>
-  </header>
-
-  <!-- This is the part that will transition for battle -->
-  <main id="main">
-    <button id="menu-btn">☰</button>
-    <div id="roamView">
-      <canvas id="canvas"></canvas>
-    </div>
-    
-    <div id="battleView">
-      <div id="stadiumBackground"></div>
-      <div class="corners" id="enemyCorner">
-        <div id="enemyHealth"><span id="enemyName">Lugia</span> Health:
-          <progress id="eHealthBar" value="100" max="100"></progress>
-        </div>
-        <div id="eOptions">
-          <p class="enemyOptions"><span id="eAAttack">(A)Attack</span> <span id="eDHeal">(H)Heal</span></p>
-          <h2 class="enemyOptions" id="ePressEnter"></h2>
-        </div>
-        <!-- <img src="https://i.imgur.com/wcQL4UU.jpg" alt="Pokemon" id="enemyImg"> -->
-        <img src="lugia.png" alt="Pokemon" id="enemyImg">
+        <button hidden id="btnChangeView">Change View</button>
       </div>
-      <div class="corners" id="playerCorner">
-        <img src="battlePikachu.png" alt="Pikachu">
-        <!-- <img src="https://i.imgur.com/wcQL4UU.jpg" alt="PIKA_PIC"> -->
+
+      <label for="aIMode">
+        <input type="checkbox" id="aIMode" checked /> Enemy AI Mode
+      </label>
+      <label for="renderPokemon">
+        <input type="checkbox" id="renderPokemon" checked /> Render Wild Pokemon
+      </label>
+      <button id="viewChangeBtn">viewChange</button>
+      <div>
+        <label for="playerAttackStat"
+          >playerAttackStat:
+          <input type="number" id="playerAttackStat" value="40" />
+        </label>
+        <label for="playerHealStat"
+          >playerHealStat:
+          <input type="number" id="playerHealStat" value="20" />
+        </label>
+        <label for="enemyAttackStat"
+          >enemyAttackStat:
+          <input type="number" id="enemyAttackStat" value="4" />
+        </label>
+        <label for="enemyHealStat"
+          >enemyHealStat:
+          <input type="number" id="enemyHealStat" value="2" />
+        </label>
       </div>
-      <div id="battleWords">
-        <div id="turnDescription"></div>
-        <h1 id="turnIndicator">Pikachu's turn</h1>
-        <h2>Do you want to attack or heal?</h2>
-        <div id="pOptions" class="border">
-          <p class="playerOptions"><span id="AAttack">(A)Attack</span> <span id="DHeal">(H)Heal</span></p>
-          <h2 class="playerOptions" id="pressEnter"></h2>
+    </header>
+
+    <!-- This is the part that will transition for battle -->
+    <main id="main">
+      <button id="menu-btn">☰</button>
+      <div id="roamView">
+        <canvas id="canvas"></canvas>
+      </div>
+
+      <div id="battleView">
+        <div id="stadiumBackground"></div>
+        <div class="corners" id="enemyCorner">
+          <div id="enemyHealth">
+            <span id="enemyName">Lugia</span> Health:
+            <progress id="eHealthBar" value="100" max="100"></progress>
+          </div>
+          <div id="eOptions">
+            <p class="enemyOptions">
+              <span id="eAAttack">(A)Attack</span>
+              <span id="eHHeal">(H)Heal</span>
+            </p>
+            <h2 class="enemyOptions" id="ePressEnter"></h2>
+          </div>
+          <!-- <img src="https://i.imgur.com/wcQL4UU.jpg" alt="Pokemon" id="enemyImg"> -->
+          <img src="lugia.png" alt="Pokemon" id="enemyImg" />
+        </div>
+        <div class="corners" id="playerCorner">
+          <img src="battlePikachu.png" alt="Pikachu" />
+          <!-- <img src="https://i.imgur.com/wcQL4UU.jpg" alt="PIKA_PIC"> -->
+        </div>
+        <div id="battleWords">
+          <div id="turnDescription"></div>
+          <h1 id="turnIndicator">Pikachu's turn</h1>
+          <h2>Do you want to attack or heal?</h2>
+          <div id="pOptions" class="border">
+            <p class="playerOptions">
+              <span id="AAttack">(A)Attack</span>
+              <span id="HHeal">(H)Heal</span>
+            </p>
+            <h2 class="playerOptions" id="pressEnter"></h2>
+          </div>
+        </div>
+        <div id="pikaHealth">
+          Pika Health:
+          <progress id="healthbar" value="90" max="100"></progress>
         </div>
       </div>
-    </div>
+    </main>
 
-  </main>
-
-  <div id="controls-left">
-    <button class="control-btn" id="btn-up">▲</button>
-    <div id="control-left-right">
-      <button class="control-btn" id="btn-left">◀</button>
-      <button class="control-btn" id="btn-right">▶</button>
-    </div>
+    <div id="controls-left">
+      <button class="control-btn" id="btn-up">▲</button>
+      <div id="control-left-right">
+        <button class="control-btn" id="btn-left">◀</button>
+        <button class="control-btn" id="btn-right">▶</button>
+      </div>
       <button class="control-btn" id="btn-down">▼</button>
-  </div>
+    </div>
 
-  <div id="controls-right">
-    <button class="control-btn" id="btn-attack">A</button>
-    <button class="control-btn" id="btn-heal">H</button>
-  </div>
+    <div id="controls-right">
+      <button class="control-btn" id="btn-attack">A</button>
+      <button class="control-btn" id="btn-heal">H</button>
+    </div>
 
-  <!-- 'position: fixed' Health bar -->
-  <div id="pikaHealth">Pika Health:
-    <progress id="healthbar" value="90" max="100"></progress>
-  </div>
-
-  <!-- <script src="functions.js"></script> -->
-  <script src="app.js"></script>
-</body>
+    <!-- <script src="functions.js"></script> -->
+    <script src="app.js"></script>
+  </body>
 </html>
