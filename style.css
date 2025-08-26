@@ -35,7 +35,7 @@ body {
   font-size: 2.5rem;
 }
 .collapsed {
-  display: none;
+  display: none !important;
 }
 #pikaPosition {
   font-size: 1.5rem;
@@ -47,8 +47,9 @@ label > input[type="number"] {
   font-size: 1.5rem;
   width: 50px;
 }
-#viewChangeBtn {
-  display: none;
+#stats {
+  display: flex;
+  flex-wrap: wrap;
 }
 main {
   /* width: 300px; */
@@ -102,8 +103,8 @@ canvas {
   position: relative;
 }
 #stadiumBackground img {
-  width: 100%;       /* Fill width */
-  height: 100%;      /* Fill height */
+  width: 100%; /* Fill width */
+  height: 100%; /* Fill height */
   object-fit: cover; /* Fill div, maintain aspect ratio, crop if needed */
 }
 .corners {
@@ -243,6 +244,8 @@ canvas {
 @media (max-width: 768px) {
   #header {
     font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
   }
   #battleView {
     grid-template-columns: 1fr; /* single column */

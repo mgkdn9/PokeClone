@@ -112,18 +112,18 @@ document.addEventListener("DOMContentLoaded", () => {
       pikachu.x += 10; //move right 10
     }
   }
-  document.getElementById("btn-up").addEventListener("click", e => {
-    moveUp()
-  })
-  document.getElementById("btn-down").addEventListener("click", e => {
-    moveDown()
-  })
-  document.getElementById("btn-left").addEventListener("click", e => {
-    moveLeft()
-  })
-  document.getElementById("btn-right").addEventListener("click", e => {
-    moveRight()
-  })
+  document.getElementById("btn-up").addEventListener("click", (e) => {
+    moveUp();
+  });
+  document.getElementById("btn-down").addEventListener("click", (e) => {
+    moveDown();
+  });
+  document.getElementById("btn-left").addEventListener("click", (e) => {
+    moveLeft();
+  });
+  document.getElementById("btn-right").addEventListener("click", (e) => {
+    moveRight();
+  });
 
   // detect player entering PokeCenter and heal
   function pokeCenterHandler() {
@@ -220,10 +220,6 @@ document.addEventListener("DOMContentLoaded", () => {
   function viewChange() {
     main.classList.toggle("view-change");
   }
-  btnChangeView.addEventListener("click", (e) => {
-    e.preventDefault();
-    viewChange();
-  });
 
   // Stop rendering canvas in battleView
   function clearGameInterval() {
@@ -508,9 +504,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // State machine for battling
   document.addEventListener("keydown", takeTurn);
-
-  // Button for manually changing view (for development only)
-  viewChangeBtn.addEventListener("click", viewChange);
 
   const menuBtn = document.getElementById("menu-btn");
 
