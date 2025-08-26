@@ -61,43 +61,69 @@ document.addEventListener("DOMContentLoaded", () => {
   // move player around PlayerMovementArea
   function movementHandler(event) {
     if (battlePhase) {
-      if (event.keyCode == 38 || event.keyCode == 40) event.preventDefault();
+      //prevent screen from scrolling from pressing arrows
+      if (event.key == "ArrowUp" || event.key == "ArrowDown")
+        event.preventDefault();
     } else {
       // switch (event.key.toLowerCase()) {
-      switch (event.keyCode) {
-        case 38: // UP key
+      switch (event.key) {
+        case "ArrowUp": // UP key
           event.preventDefault(); //prevent screen from scrolling from pressing arrows
-          if (pikachu.y <= 10) {
-            pikachu.y = 0; //don't go past boundary
-          } else {
-            pikachu.y -= 10; //move up 10
-          }
+          moveUp();
           break;
-        case 37: // LEFT key
-          if (pikachu.x <= 10) {
-            pikachu.x = 0; //don't go past boundary
-          } else {
-            pikachu.x -= 10; //move left 10
-          }
+        case "ArrowLeft": // LEFT key
+          moveLeft();
           break;
-        case 40: // DOWN key
+        case "ArrowDown": // DOWN key
           event.preventDefault(); //prevent screen from scrolling from pressing arrows
-          if (pikachu.y >= 130) {
-            pikachu.y = 140; //don't go past boundary
-          } else {
-            pikachu.y += 10; //move down 10
-          }
+          moveDown();
           break;
-        case 39: // RIGHT key
-          if (pikachu.x >= 280) {
-            pikachu.x = 290; //don't go past boundary
-          } else {
-            pikachu.x += 10; //move right 10
-          }
+        case "ArrowRight": // RIGHT key
+          moveRight();
           break;
       }
     }
   }
+  function moveUp() {
+    if (pikachu.y <= 10) {
+      pikachu.y = 0; //don't go past boundary
+    } else {
+      pikachu.y -= 10; //move up 10
+    }
+  }
+  function moveDown() {
+    if (pikachu.y >= 130) {
+      pikachu.y = 140; //don't go past boundary
+    } else {
+      pikachu.y += 10; //move down 10
+    }
+  }
+  function moveLeft() {
+    if (pikachu.x <= 10) {
+      pikachu.x = 0; //don't go past boundary
+    } else {
+      pikachu.x -= 10; //move left 10
+    }
+  }
+  function moveRight() {
+    if (pikachu.x >= 280) {
+      pikachu.x = 290; //don't go past boundary
+    } else {
+      pikachu.x += 10; //move right 10
+    }
+  }
+  document.getElementById("btn-up").addEventListener("click", e => {
+    moveUp()
+  })
+  document.getElementById("btn-down").addEventListener("click", e => {
+    moveDown()
+  })
+  document.getElementById("btn-left").addEventListener("click", e => {
+    moveLeft()
+  })
+  document.getElementById("btn-right").addEventListener("click", e => {
+    moveRight()
+  })
 
   // detect player entering PokeCenter and heal
   function pokeCenterHandler() {
@@ -497,5 +523,4 @@ document.addEventListener("DOMContentLoaded", () => {
       menuBtn.textContent = "☰";
     }
   });
-
 });
