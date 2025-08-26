@@ -4,7 +4,6 @@
 }
 body {
   background-color: #333;
-  /* max-width: 1000px; */
   margin: 0 auto;
 }
 #menu-btn {
@@ -31,6 +30,7 @@ body {
   position: absolute;
   top: 0;
   height: auto;
+  width: 100%;
   z-index: 999;
   font-size: 2.5rem;
 }
@@ -76,6 +76,7 @@ canvas {
   width: 100%;
 }
 #battleView {
+  height: 100%;
   transform: translateX(100%);
   display: grid;
   grid-template-columns: 60% auto;
@@ -94,11 +95,17 @@ canvas {
   transform: translateX(0);
 }
 #stadiumBackground {
-  background-image: url("stadium.png");
-  background-repeat: no-repeat;
+  /* background-image: url("stadium.png");
+  background-repeat: no-repeat; */
   background-position: 60% 0%;
   grid-column: 1/2;
   grid-row: 1/3;
+  height: 100%;
+}
+#stadiumBackground img {
+  width: 100%;       /* Fill width */
+  height: 100%;      /* Fill height */
+  object-fit: cover; /* Fill div, maintain aspect ratio, crop if needed */
 }
 .corners {
   height: 250px;

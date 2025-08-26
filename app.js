@@ -232,7 +232,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         eHealthBar.value = 100;
         let eName = searchBox.value;
-        console.log("eName", eName);
         eName = eName.charAt(0).toUpperCase() + eName.slice(1);
         turnDescription.innerText = eName + " appeared!";
         pikaTurn = true;
