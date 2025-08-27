@@ -108,20 +108,30 @@ canvas {
   object-fit: cover; /* Fill div, maintain aspect ratio, crop if needed */
 }
 .corners {
-  height: 250px;
-  width: 100%;
+  /* max-height: 250px; */
   position: relative;
 }
 #enemyCorner {
   grid-column: 1;
   grid-row: 1;
+  width: 100%;
+  height: 200px;
   position: absolute;
-  top: 0px;
+  top: 0;
+  right: 0;
+}
+#enemyImg {
+  object-fit: contain;
+  position: absolute;
+  top: 0;
+  right: 0;
+  max-width: 50vw;
 }
 #enemyHealth {
   color: whitesmoke;
   font-size: 1.5rem;
   background: #333;
+  width: 50vw;
 }
 .enemyOptions {
   background: #333;
@@ -133,20 +143,13 @@ canvas {
   padding: 5px;
   color: grey;
 }
-#enemyCorner > img {
-  width: 300px;
-  position: absolute;
-  right: 0;
-  background: transparent;
-  transform: translateY(-15%);
-}
 #playerCorner {
   grid-column: 1;
   grid-row: 1;
   position: absolute;
   bottom: 40px;
-  left: 30px;
-  width: 300px;
+  left: 0px;
+  max-width: 50vw;
   height: auto;
 }
 #playerCorner > img {
@@ -160,7 +163,6 @@ canvas {
   text-align: center;
 }
 #turnDescription {
-  height: 100px;
   font-size: 1.5rem;
   padding: 10px;
 }
@@ -174,8 +176,13 @@ canvas {
   border: 3px solid white;
 }
 #eOptions {
-  width: 280px;
+  width: 50vw;
   text-align: center;
+}
+#eHealthBar {
+  width: 90%;
+  height: 20px; 
+
 }
 #AAttack,
 #HHeal {
@@ -218,7 +225,6 @@ canvas {
 .control-btn {
   font-size: 2rem;
   padding: 20px;
-  margin: 5px;
   border-radius: 50%;
   border: none;
   background: #555;
@@ -260,5 +266,9 @@ canvas {
     grid-column: 1 / 2;
     grid-row: 2;
     width: 100%;
+  }
+  .enemyOptions > span {
+    font-size: 1.5rem;
+    padding: 3px;
   }
 }

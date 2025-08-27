@@ -260,7 +260,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Initialize CSS for battle start (Pikachu's turn)
         pOptions.classList.add("border");
         eOptions.classList.remove("border");
-        pressEnter.style.display = "none";
+        pressEnter.style.visibility = "hidden";
         ePressEnter.style.display = "none";
         HHeal.classList.remove("selected");
         eHHeal.classList.remove("selected");
@@ -290,7 +290,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (event.key.toLowerCase() === "a" && pikaTurn) {
         AAttack.classList.add("selected");
         HHeal.classList.remove("selected");
-        pressEnter.style.display = "block";
+        pressEnter.style.visibility = "visible";
         pressEnter.innerText = "(Press Enter to Attack)";
       } else if (event.key.toLowerCase() === "a" && !aIOn) {
         eAAttack.classList.add("selected");
@@ -299,7 +299,7 @@ document.addEventListener("DOMContentLoaded", () => {
       } else if (event.key.toLowerCase() === "h" && pikaTurn) {
         HHeal.classList.add("selected");
         AAttack.classList.remove("selected");
-        pressEnter.style.display = "block";
+        pressEnter.style.visibility = "visible";
         pressEnter.innerText = "(Press Enter to Heal)";
       } else if (event.key.toLowerCase() === "h" && !aIOn) {
         eHHeal.classList.add("selected");
@@ -342,7 +342,7 @@ document.addEventListener("DOMContentLoaded", () => {
               turnDescription.innerText = "Pikachu healed!";
               turnIndicator.innerText = searchBox.value + "'s turn";
             }
-            pressEnter.style.display = "none";
+            pressEnter.style.visibility = "hidden";
             ePressEnter.style.display = "block";
             // If player didn't win battle...
             if (eHealthBar.value > 0) {
@@ -360,7 +360,7 @@ document.addEventListener("DOMContentLoaded", () => {
             } else if (eHealSelected) {
               eHeal();
             }
-            pressEnter.style.display = "block";
+            pressEnter.style.visibility = "visible";
             ePressEnter.style.display = "none";
             break;
         }
@@ -368,13 +368,13 @@ document.addEventListener("DOMContentLoaded", () => {
         if (pikaTurn) {
           pOptions.classList.add("border");
           eOptions.classList.remove("border");
-          pressEnter.style.display = "block";
+          pressEnter.style.visibility = "visible";
           ePressEnter.style.display = "none";
         } else {
           pOptions.classList.remove("border");
           eOptions.classList.add("border");
           ePressEnter.style.display = "block";
-          pressEnter.style.display = "none";
+          pressEnter.style.visibility = "hidden";
         }
       }
     }
@@ -407,7 +407,7 @@ document.addEventListener("DOMContentLoaded", () => {
     pikaTurn = true;
     pOptions.classList.add("border");
     eOptions.classList.remove("border");
-    pressEnter.style.display = "block";
+    pressEnter.style.visibility = "visible";
   }
   function eAttack() {
     if (Math.random() < 0.9) {
