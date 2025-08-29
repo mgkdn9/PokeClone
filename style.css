@@ -1,6 +1,7 @@
 :root {
   --pikaHealthHeight: 40px;
-  --controlsHeight: 240px;
+  --controlsHeight: calc(50vw - 10px);
+  --controlGroupsWidth: calc(50vw - 10px);
 }
 body {
   background-color: #333;
@@ -51,6 +52,12 @@ label > input[type="number"] {
   display: flex;
   flex-wrap: wrap;
 }
+#emulator {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
 main {
   /* width: 300px; */
   width: 100%;
@@ -72,9 +79,16 @@ main {
 
   transition: transform 0.8s cubic-bezier(0.465, 0.183, 0.153, 0.946);
 }
-canvas {
+/* canvas {
   background-color: black;
   width: 100%;
+} */
+canvas {
+  background: black;
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  max-height: 50vh;
 }
 #battleView {
   display: grid;
@@ -181,8 +195,7 @@ canvas {
 }
 #eHealthBar {
   width: 90%;
-  height: 20px; 
-
+  height: 20px;
 }
 #AAttack,
 #HHeal {
@@ -203,22 +216,31 @@ canvas {
   height: var(--pikaHealthHeight);
 }
 /* BUTTONS */
+.controls-wrapper {
+  display: contents;
+}
+.controls-left,
+.controls-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+/* .control-groups {
+  width: var(--controlGroupsWidth);
+  position: absolute;
+  bottom: 0;
+}
 #controls-left {
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: var(--controlsHeight);
-  position: absolute;
-  left: 25%;
-  transform: translate(-50%, 0);
-  bottom: calc(var(--pikaHealthHeight) + 20px);
+  left: 10px;
 }
 #controls-right {
   height: var(--controlsHeight);
-  position: absolute;
-  left: 75%;
-  bottom: var(--pikaHealthHeight);
-  transform: translate(-50%, 0);
+  right: 10px;
   display: flex;
   gap: 20px;
 }
@@ -230,9 +252,8 @@ canvas {
   background: #555;
   color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-  width: 80px;
-  height: 80px;
-  margin: 0 auto;
+  width: calc(var(--controlGroupsWidth) / 3);
+  height: calc(var(--controlGroupsWidth) / 3);
   pointer-events: auto;
   cursor: pointer;
   transition: transform 0.1s, background 0.1s;
@@ -245,7 +266,7 @@ canvas {
 #control-left-right {
   display: flex;
   gap: 60px;
-}
+} */
 /* Small screens */
 @media (max-width: 768px) {
   #header {
@@ -271,4 +292,98 @@ canvas {
     font-size: 1.5rem;
     padding: 3px;
   }
+}
+/* Portrait layout: canvas top, buttons below */
+@media (orientation: portrait) {
+  /* .controls-container {
+          flex-direction: row;
+        } */
+  .controls-wrapper {
+    display: flex;
+  }
+  .controls-left,
+  .controls-right {
+    width: 50%;
+    height: auto;
+    flex: 1;
+  } /* Left buttons in diamond shape */
+  .controls-left {
+    flex-direction: column;
+  }
+  .controls-left .row {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  .controls-left button {
+    margin: 5px;
+    width: 60px;
+    height: 60px;
+    font-size: 1.2rem;
+  } /* Right buttons A/B side by side */
+  .controls-right {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .controls-right button {
+    width: 60px;
+    height: 60px;
+    font-size: 1.2rem;
+    margin: 5px;
+  }
+} /* Landscape layout: canvas center, buttons left/right taking full height */
+@media (orientation: landscape) {
+  #emulator {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  canvas {
+    max-width: 50vw;
+    height: 100%;
+  }
+  /* .controls-container {
+          flex-direction: column;
+          width: auto;
+          height: 100%;
+          position: relative;
+        } */
+  .controls-left,
+  .controls-right {
+    width: auto;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .controls-left {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  .controls-right {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .controls-left button,
+  .controls-right button {
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+    font-size: 1.2rem;
+  }
+  .controls-left .row {
+    flex-direction: row;
+  }
+}
+button {
+  border-radius: 10px;
+  border: none;
+  background: #555;
+  color: white;
+  cursor: pointer;
+  user-select: none;
+}
+button:active {
+  background: #777;
 }

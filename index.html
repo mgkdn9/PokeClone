@@ -59,68 +59,77 @@
       </div>
     </header>
 
-    <!-- This is the part that will transition for battle -->
-    <main id="main">
-      <button id="menu-btn">☰</button>
-      <div id="roamView">
-        <canvas id="canvas"></canvas>
-      </div>
+    <div id="emulator">
+      <!-- This is the part that will transition for battle -->
+      <main id="main">
+        <button id="menu-btn">☰</button>
+        <div id="roamView">
+          <canvas id="canvas"></canvas>
+        </div>
 
-      <div id="battleView">
-        <div id="stadiumBackground">
-          <img src="stadium.png" alt="Pokemon" />
-          <div class="corners" id="enemyCorner">
-            <div id="enemyHealth">
-              <span><span id="enemyName">Lugia</span> Health:</span>
-              <progress id="eHealthBar" value="100" max="100"></progress>
+        <div id="battleView">
+          <div id="stadiumBackground">
+            <img src="stadium.png" alt="Pokemon" />
+            <div class="corners" id="enemyCorner">
+              <div id="enemyHealth">
+                <span><span id="enemyName">Lugia</span> Health:</span>
+                <progress id="eHealthBar" value="100" max="100"></progress>
+              </div>
+              <div id="eOptions">
+                <p class="enemyOptions">
+                  <span id="eAAttack">(A)Attack</span>
+                  <span id="eHHeal">(H)Heal</span>
+                </p>
+                <h2 class="enemyOptions" id="ePressEnter"></h2>
+              </div>
+              <img src="lugia.png" alt="Pokemon" id="enemyImg" />
             </div>
-            <div id="eOptions">
-              <p class="enemyOptions">
-                <span id="eAAttack">(A)Attack</span>
-                <span id="eHHeal">(H)Heal</span>
+            <div class="corners" id="playerCorner">
+              <img src="battlePikachu.png" alt="Pikachu" />
+            </div>
+          </div>
+          <div id="battleWords">
+            <div id="turnDescription"></div>
+            <h1 id="turnIndicator">Pikachu's turn</h1>
+            <h2>Do you want to attack or heal?</h2>
+            <div id="pOptions" class="border">
+              <p class="playerOptions">
+                <span id="AAttack">(A)Attack</span>
+                <span id="HHeal">(H)Heal</span>
               </p>
-              <h2 class="enemyOptions" id="ePressEnter"></h2>
+              <h2 class="playerOptions" id="pressEnter">&nbsp;</h2>
             </div>
-            <img src="lugia.png" alt="Pokemon" id="enemyImg" />
           </div>
-          <div class="corners" id="playerCorner">
-            <img src="battlePikachu.png" alt="Pikachu" />
-          </div>
-        </div>
-        <div id="battleWords">
-          <div id="turnDescription"></div>
-          <h1 id="turnIndicator">Pikachu's turn</h1>
-          <h2>Do you want to attack or heal?</h2>
-          <div id="pOptions" class="border">
-            <p class="playerOptions">
-              <span id="AAttack">(A)Attack</span>
-              <span id="HHeal">(H)Heal</span>
-            </p>
-            <h2 class="playerOptions" id="pressEnter">&nbsp;</h2>
+          <div id="pikaHealth">
+            Pika Health:
+            <progress id="healthbar" value="90" max="100"></progress>
           </div>
         </div>
-        <div id="pikaHealth">
-          Pika Health:
-          <progress id="healthbar" value="90" max="100"></progress>
+      </main>
+      <div class="controls-wrapper">
+
+        <div class="controls-left">
+          <div class="row"><button id="btn-up">▲</button></div>
+          <div class="row">
+            <button id="btn-left">◀</button> <button id="btn-down">▼</button> <button id="btn-right">▶</button>
+          </div>
         </div>
+        <div class="controls-right"><button>A</button> <button>B</button></div>
+        <!-- <div class="control-groups" id="controls-left">
+          <button class="control-btn" id="btn-up">▲</button>
+          <div id="control-left-right">
+            <button class="control-btn" id="btn-left">◀</button>
+            <button class="control-btn" id="btn-right">▶</button>
+          </div>
+          <button class="control-btn" id="btn-down">▼</button>
+        </div>
+
+        <div class="control-groups" id="controls-right"> 
+          <button class="control-btn" id="btn-attack">A</button>
+          <button class="control-btn" id="btn-heal">H</button>
+        </div>-->
       </div>
-    </main>
-
-    <div id="controls-left">
-      <button class="control-btn" id="btn-up">▲</button>
-      <div id="control-left-right">
-        <button class="control-btn" id="btn-left">◀</button>
-        <button class="control-btn" id="btn-right">▶</button>
-      </div>
-      <button class="control-btn" id="btn-down">▼</button>
     </div>
-
-    <div id="controls-right">
-      <button class="control-btn" id="btn-attack">A</button>
-      <button class="control-btn" id="btn-heal">H</button>
-    </div>
-
-    <!-- <script src="functions.js"></script> -->
     <script src="app.js"></script>
   </body>
 </html>

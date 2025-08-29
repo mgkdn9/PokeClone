@@ -228,7 +228,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Start battle
   function startBattle() {
-    // const fetchURL = 'http://pokeapi.co/api/v2/pokemon/'//URL for API
     fetch(fetchURL + searchBox.value)
       .then((response) => response.json())
       .then((jsonData) => {
