@@ -91,12 +91,15 @@ canvas {
   max-height: 50vh;
 }
 #battleView {
+
+    max-width: 1500px;
+    width: 50vw;
   display: grid;
   grid-template-columns: 60% 1fr;
   grid-template-rows: 1fr;
   height: 100%;
   position: relative;
-  transform: translateX(100%);
+  transform: translateX(100vw);
 
   /* let the browser know we plan to animate
      each view in and out */
@@ -339,7 +342,8 @@ canvas {
     justify-content: center;
   }
   canvas {
-    max-width: 50vw;
+    max-width: 1500px;
+    width: 50vw;
     height: 100%;
   }
   /* .controls-container {
