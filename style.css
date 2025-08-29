@@ -93,7 +93,7 @@ canvas {
 #battleView {
 
     max-width: 1500px;
-    width: 50vw;
+    width: 75vw;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 60% 1fr;
@@ -114,13 +114,13 @@ canvas {
 .view-change #battleView {
   transform: translateX(0);
 }
-#stadiumBackground {
+#stadium {
   grid-column: 1/2;
   grid-row: 1;
   height: 100%;
   position: relative;
 }
-#stadiumBackground img {
+#stadium-image {
   width: 100%; /* Fill width */
   height: 100%; /* Fill height */
   object-fit: cover; /* Fill div, maintain aspect ratio, crop if needed */
@@ -139,11 +139,11 @@ canvas {
   right: 0;
 }
 #enemyImg {
-  object-fit: contain;
+  /* object-fit: contain; */
   position: absolute;
   top: 0;
   right: 0;
-  max-width: 50vw;
+  width: 50%;
 }
 #enemyHealth {
   color: whitesmoke;
@@ -167,11 +167,11 @@ canvas {
   position: absolute;
   bottom: 40px;
   left: 0px;
-  max-width: 50vw;
+  width: 50vw;
   height: auto;
 }
-#playerCorner > img {
-  background: white;
+#playerImg {
+  width: 25vw;
   background: transparent;
 }
 #battleWords {
@@ -282,7 +282,7 @@ canvas {
     grid-template-columns: 1fr; /* single column */
     grid-template-rows: auto auto; /* first row: stage, second row: battleWords */
   }
-  #stadiumBackground {
+  #stadium {
     grid-column: 1;
     grid-row: 1;
     height: auto; /* adjust height if needed */
@@ -344,7 +344,7 @@ canvas {
   }
   canvas {
     max-width: 1500px;
-    width: 50vw;
+    width: 75vw;
     height: 100%;
   }
   /* .controls-container {
