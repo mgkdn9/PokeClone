@@ -94,6 +94,7 @@ canvas {
 
     max-width: 1500px;
     width: 50vw;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 60% 1fr;
   grid-template-rows: 1fr;
@@ -108,7 +109,7 @@ canvas {
   transition: transform 0.8s cubic-bezier(0.465, 0.183, 0.153, 0.946);
 }
 .view-change #roamView {
-  transform: translateX(-100%);
+  transform: translateX(-100vw);
 }
 .view-change #battleView {
   transform: translateX(0);
